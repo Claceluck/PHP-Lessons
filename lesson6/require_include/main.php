@@ -25,10 +25,13 @@ $books = getBooks();
 
 <body>
 
-<? include_once "components/header.php" ?>
+<!-- подключение хеадера  include_once не даёт дублироваться подключениям-->
+<? include_once "components/header.php" ?> 
 
     <div>
+    <!-- через цикл foreach перебераем массив который поключили в начале в php скрипте-->
     <?foreach($books as $book): ?>
+    <!-- всё выводим через echo -->
         <h3>Книга <?echo $book['title']?> </h3>
         <h6>Автор: <?echo $book['author']?> </h6>
         <img width="400" height="200" src="img/<?echo $book['img']?>">
@@ -36,7 +39,7 @@ $books = getBooks();
         <a href="book.php?id=<?echo $book['id']?>">Подробнее...</a>
     <? endforeach; ?>
     </div>
-
+<!-- подключаем футер -->
 <? include_once "components/footer.php" ?>
 
 </body>
