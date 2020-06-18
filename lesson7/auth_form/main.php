@@ -1,6 +1,6 @@
 <?php
-
-
+session_start();
+$login = $_SESSION['login'];
 ?>
 
 <!doctype html>
@@ -16,9 +16,11 @@
     <a href="#">Страница 1</a>
     <a href="#">Страница 2</a>
 
-    <a href="logout.php">Выйти</a> <!--отображать авторизованным-->
-
-    <a id="open_modal">Войти</a> <!--отображать неавторизованным-->
+    <? if($login): ?> <!-- если пользователь авторизован -->
+    <a href="logout.php">Выйти</a> <!--отображаем данную строчку-->
+    <? else: ?> <!-- в противном случае -->
+    <a id="open_modal">Войти</a> <!--отображаем данную строчку-->
+    <? endif; ?> <!-- заканчиваем if -->
 </nav>
 
 <!--модальное окно-->
@@ -26,7 +28,7 @@
 
     <p id="errors"></p>
 
-    <form action="formHandler.php" name="auth_form">
+    <form action="formHandler.php" name="auth_form" method="post">
         <p><input class="validate" type="text" name="login" placeholder="логин"></p>
         <p><input class="validate" type="password" name="password" placeholder="пароль"></p>
         <p>
@@ -39,9 +41,10 @@
 
 <h3>Страница доступна всем пользователям</h3>
 
-<!--подключать только для авторизованных пользователей-->
+<!--подключать только для неавторизованных пользователей-->
+<? if (!$login): ?>
   <script src="js/form.js"></script>
-
+<? endif; ?>
 
 </body>
 </html>

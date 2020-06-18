@@ -1,3 +1,15 @@
+<?php 
+session_start();
+
+if(!isset($_SESSION['login'])){ // если пользователь не авторизован мы перенапраляем его на главную страницу 
+    header('Location: main.php');
+}
+
+$login = $_SESSION['login'];
+
+?>
+
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -13,7 +25,7 @@
     </ul>
 </nav>
 
-<h2> ЛОГИН, добро пожаловать в личный кабинет</h2>
+<h2><? echo $login ?> , добро пожаловать в личный кабинет</h2>
 
 </body>
 </html>
