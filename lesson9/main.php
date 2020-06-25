@@ -1,5 +1,6 @@
 <?php
 require_once 'Author.php';
+require_once 'Article.php';
 
 // объкты в php создаются на основе заранее
 // созданных класов с помощью оператора new
@@ -8,7 +9,8 @@ require_once 'Author.php';
 // создаём экзепляр класса Author
 
 $mark = new Author();
-var_dump($mark);
+$ivan = new Author();
+// var_dump($mark);
 
 // обращение к свойствам и методам объекта
 // объект->название_свойства
@@ -16,11 +18,39 @@ var_dump($mark);
 
 // установим значение свойства name объекту $mark
 
-$mark->name = 'Марк';
-
-// установим значение свойства age объекту $mark
-$mark->age = 29;
-var_dump($mark);
+$mark->name = 'Марк'; // присваеваем значения объекту не переменной
+$ivan->name = 'Ivan';
+$ivan->age = 78;
 
 // $oleg = $mark; // ссылка на объект в памяти
 
+// установим значение свойства age объекту $mark
+$mark->age = 29;
+
+// получим значение свойств name и age объекта $mark
+var_dump($mark->name);
+var_dump($mark->age);
+
+$php = new Article($mark, 'PHP 7');
+var_dump($php);
+
+// вывести возраст автора статьи $php
+// $php->author - ссылка на объект $mark те
+// $php->author -> объект_автора <- $mark
+
+var_dump($php->author->age);
+$js = new Article($mark, 'JS');
+
+
+// Домашнее задание
+// несколько объектов автомобилей
+// храняться в гараже
+
+// class Car
+
+// class Garage
+    // $cars - массив
+    
+// автомобили добавить в гараж через конструктор
+// добавить автомобиль в гараж 
+// вывести модели всех автомобилей
