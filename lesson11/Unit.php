@@ -1,7 +1,11 @@
 <?php
 
-class Unit 
+require_once 'RestAble.php';
+
+// abstract на основе абстрактных классов нелья создать объект, абстратные классы могут иметь методы без реализации
+abstract class Unit implements RestAble
 {
+
     // доступ к свойствам доступен внутри данного класса и всех его классов аследников 
     // $this->health_score
 

@@ -7,8 +7,28 @@ class Knight extends BattleUnit
     {
         parent::__construct($health,$speed,$attack);
     }
+    
+    public function rest()
+    {
+        $this->health_score += 1;
+        echo 'Отдых Knight';
+    }
+  
+    public function attack(Unit $unit)
+    {
+        $unit->health_score -= $this->attack_score;
+    }
 
+    // переопределить метод родителя что бы расширеть фунционал
+    public function runFromField()
+    {
+        // вызов метода родителя приведёт к уменьшению атаки и здоровья , при переопределение метода родителя можно не использовать его метод, а полностью описать собственный фунционал
 
+        
+        parent::runFromField();
+        // расшираяем функционал родителя, уменьшая скорость
+        $this->speed -= 1;
+    }
 }
 // $knight = new Knight(23, 67, 22);
 // 1. Будет вызван конструктор Knight

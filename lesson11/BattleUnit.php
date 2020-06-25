@@ -3,7 +3,8 @@
 require_once 'Unit.php';
 
 // класс BattleUnit наследуеться от класса Гnit, те класс BattleUnit расширяет класс Unit
-class BattleUnit extends Unit
+// BattleUnit - передал обязанность реализовать метод rest
+abstract class BattleUnit extends Unit implements BattleAble
 {
     protected $attack_score;
 
@@ -22,9 +23,24 @@ class BattleUnit extends Unit
     {
         return $this->attack_score;
     }
+
+// реализуем метод интерфейса BattleAble, реализацию метода по наследству получат все потомки данного класса + получат возможность не писать своих реализаций данного метода
+
+// метод attack() интерфейса  BattleAble  не будет реализован в данном классе, соответсвенно все потомки данного класса будут обязаны реализвать данный метод( или объявленны абстрактно)
+
+public function runFromField()
+{
+    // $this->setAttackScore($this->attack_score -= 1); обращение через сеттер 
+    $this->health_score -= 2;
+    $this->attack_score -= 1;
+
+}
+
+
+
     //  statick можно вызвать метод без создания объекта
     public static function getBattleUnit($unit_type){
-    
+
     // knight
     // первую букву приводит к верхему регситру 
     $unit_name = ucfirst($unit_type); // Knight
