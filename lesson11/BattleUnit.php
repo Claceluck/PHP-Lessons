@@ -2,7 +2,7 @@
 
 require_once 'Unit.php';
 
-// класс BattleUnit наследуеться от класса Гnit, те класс BattleUnit расширяет класс Unit
+// класс BattleUnit наследуеться от класса Unit, те класс BattleUnit расширяет класс Unit
 // BattleUnit - передал обязанность реализовать метод rest
 abstract class BattleUnit extends Unit implements BattleAble
 {
